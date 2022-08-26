@@ -1,0 +1,1432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Gestion_HopitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'Gestion_Hopital.dbo.Admin' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_admin" Type="varchar" MaxLength="30" />
+          <Property Name="password_admin" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="Id_ag" />
+          </Key>
+          <Property Name="Id_ag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_ag" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenom_ag" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone_ag" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateNaissance_ag" Type="date" Nullable="false" />
+          <Property Name="Adresse_ag" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password_ag" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Image_ag" Type="image" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id_Doc" />
+          </Key>
+          <Property Name="Id_Doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Doc" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenom_Doc" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateNaissance_Doc" Type="date" Nullable="false" />
+          <Property Name="Doc_specialite" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Doc_experience" Type="int" Nullable="false" />
+          <Property Name="Doc_phone" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Doc_addr" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Doc_pass" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Doc_Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Ordonnance">
+          <Key>
+            <PropertyRef Name="Ord_Num" />
+          </Key>
+          <Property Name="Ord_Num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Maladie" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ordonnance_Medicament">
+          <Key>
+            <PropertyRef Name="id_ord_med" />
+          </Key>
+          <Property Name="id_ord_med" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantite" Type="int" />
+          <Property Name="NbrJr" Type="int" />
+          <Property Name="Nom_medic" Type="varchar" MaxLength="30" />
+          <Property Name="Ord_Num" Type="int" />
+          <Property Name="Id_Doc" Type="int" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Cin_pat" />
+          </Key>
+          <Property Name="Cin_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nom_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenom_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Genre_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateNaissance_pat" Type="date" Nullable="false" />
+          <Property Name="Adresse_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone_pat" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Image_pat" Type="image" />
+          <Property Name="Ord_Num" Type="int" />
+        </EntityType>
+        <EntityType Name="Patient_web">
+          <Key>
+            <PropertyRef Name="cin" />
+          </Key>
+          <Property Name="cin" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="tele" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="date_re" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rendez_vous">
+          <Key>
+            <PropertyRef Name="Id_rdv" />
+          </Key>
+          <Property Name="Id_rdv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_rdv" Type="date" Nullable="false" />
+          <Property Name="Heure_rdv" Type="int" Nullable="false" />
+          <Property Name="Id_Doc" Type="int" Nullable="false" />
+          <Property Name="Cin_pat" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_num" />
+          </Key>
+          <Property Name="Test_num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_test" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prix_test" Type="int" Nullable="false" />
+          <Property Name="Id_Doc" Type="int" />
+        </EntityType>
+        <EntityType Name="Test_Ordonnance">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ord_Num" Type="int" />
+          <Property Name="Test_num" Type="int" />
+        </EntityType>
+        <Association Name="FK__Ordonnanc__Id_Do__65370702">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Ordonnance_Medicament">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordonnanc__Ord_N__6442E2C9">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Ordonnance_Medicament">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Ord_Num__1B0907CE">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rendez_vo__Cin_p__25869641">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Cin_pat" />
+            </Principal>
+            <Dependent Role="Rendez_vous">
+              <PropertyRef Name="Cin_pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rendez_vo__Id_Do__24927208">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Rendez_vous">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Id_Doc__1DE57479">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Ordo__Ord_N__20C1E124">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Test_Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Ordo__Test___21B6055D">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_num" />
+            </Principal>
+            <Dependent Role="Test_Ordonnance">
+              <PropertyRef Name="Test_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Afficher_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Afficher_Rdv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AfficherFullName_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AfficherMedic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AfficherOrdonnanceMedicament" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AfficherOrdonnanceMedicamentPrint" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_om" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AfficherTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Ajouter_Agent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_ag" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_ag" Type="varchar" Mode="In" />
+          <Parameter Name="phone_ag" Type="varchar" Mode="In" />
+          <Parameter Name="date_ag" Type="date" Mode="In" />
+          <Parameter Name="adresse_ag" Type="varchar" Mode="In" />
+          <Parameter Name="password_ag" Type="varchar" Mode="In" />
+          <Parameter Name="image_ag" Type="image" Mode="In" />
+        </Function>
+        <Function Name="Ajouter_Docteur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_doc" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_doc" Type="varchar" Mode="In" />
+          <Parameter Name="date_doc" Type="date" Mode="In" />
+          <Parameter Name="spec_doc" Type="varchar" Mode="In" />
+          <Parameter Name="expe_doc" Type="int" Mode="In" />
+          <Parameter Name="phone_doc" Type="varchar" Mode="In" />
+          <Parameter Name="adresse_doc" Type="varchar" Mode="In" />
+          <Parameter Name="doc_pass" Type="varchar" Mode="In" />
+          <Parameter Name="doc_image" Type="image" Mode="In" />
+        </Function>
+        <Function Name="Ajouter_Ord_Medicament" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="qte" Type="int" Mode="In" />
+          <Parameter Name="nbr_jr" Type="int" Mode="In" />
+          <Parameter Name="nom_medic" Type="varchar" Mode="In" />
+          <Parameter Name="ord_num" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Ajouter_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+          <Parameter Name="nom_pat" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_pat" Type="varchar" Mode="In" />
+          <Parameter Name="genre_pat" Type="varchar" Mode="In" />
+          <Parameter Name="date_pat" Type="date" Mode="In" />
+          <Parameter Name="adresse_pat" Type="varchar" Mode="In" />
+          <Parameter Name="phone_pat" Type="varchar" Mode="In" />
+          <Parameter Name="image_pat" Type="image" Mode="In" />
+          <Parameter Name="maladie_pat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Ajouter_Rdv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date_rdv" Type="date" Mode="In" />
+          <Parameter Name="heure_rdv" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ajouter_rePatient_web" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin" Type="varchar" Mode="In" />
+          <Parameter Name="nom" Type="varchar" Mode="In" />
+          <Parameter Name="prenom" Type="varchar" Mode="In" />
+          <Parameter Name="tele" Type="varchar" Mode="In" />
+          <Parameter Name="date_re" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AjouterTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_test" Type="varchar" Mode="In" />
+          <Parameter Name="prix_test" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Modifier_Agent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_ag" Type="int" Mode="In" />
+          <Parameter Name="nom_ag" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_ag" Type="varchar" Mode="In" />
+          <Parameter Name="phone_ag" Type="varchar" Mode="In" />
+          <Parameter Name="date_ag" Type="date" Mode="In" />
+          <Parameter Name="adresse_ag" Type="varchar" Mode="In" />
+          <Parameter Name="password_ag" Type="varchar" Mode="In" />
+          <Parameter Name="image_ag" Type="image" Mode="In" />
+        </Function>
+        <Function Name="Modifier_Docteur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+          <Parameter Name="nom_doc" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_doc" Type="varchar" Mode="In" />
+          <Parameter Name="date_doc" Type="date" Mode="In" />
+          <Parameter Name="spec_doc" Type="varchar" Mode="In" />
+          <Parameter Name="expe_doc" Type="int" Mode="In" />
+          <Parameter Name="phone_doc" Type="varchar" Mode="In" />
+          <Parameter Name="adresse_doc" Type="varchar" Mode="In" />
+          <Parameter Name="doc_pass" Type="varchar" Mode="In" />
+          <Parameter Name="image_doc" Type="image" Mode="In" />
+        </Function>
+        <Function Name="Modifier_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+          <Parameter Name="nom_pat" Type="varchar" Mode="In" />
+          <Parameter Name="prenom_pat" Type="varchar" Mode="In" />
+          <Parameter Name="genre_pat" Type="varchar" Mode="In" />
+          <Parameter Name="date_pat" Type="date" Mode="In" />
+          <Parameter Name="adresse_pat" Type="varchar" Mode="In" />
+          <Parameter Name="phone_pat" Type="varchar" Mode="In" />
+          <Parameter Name="maladie_pat" Type="int" Mode="In" />
+          <Parameter Name="image_pat" Type="image" Mode="In" />
+        </Function>
+        <Function Name="Modifier_Rdv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date_rdv" Type="date" Mode="In" />
+          <Parameter Name="heure_rdv" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Modifier_rePatient_web" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin" Type="varchar" Mode="In" />
+          <Parameter Name="nom" Type="varchar" Mode="In" />
+          <Parameter Name="prenom" Type="varchar" Mode="In" />
+          <Parameter Name="tele" Type="varchar" Mode="In" />
+          <Parameter Name="date_re" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ModifierOrd_Medicament" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="qte" Type="int" Mode="In" />
+          <Parameter Name="nbr_jr" Type="int" Mode="In" />
+          <Parameter Name="nom_medic" Type="varchar" Mode="In" />
+          <Parameter Name="ord_num" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifierTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_test" Type="varchar" Mode="In" />
+          <Parameter Name="prix_test" Type="int" Mode="In" />
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Recherche_Docteur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_doc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Recherche_Patient_CIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Recherche_Patient_Prenom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Recherche_Rdv_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="RechercherNomTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_test" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RechercherOrd_Medicament_Nom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_medic" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="rechercherRdvDoc_CIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RechercherTestDocNom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_doc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Supprimer_Agent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_ag" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Supprimer_Docteur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Supprimer_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supprimer_Rdv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin_pat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supprimer_rePatient_web" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cin" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SupprimerOrd_Medicament" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SupprimerTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_doc" Type="int" Mode="In" />
+          <Parameter Name="nom_test" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Gestion_HopitalModelStoreContainer">
+          <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordonnance" EntityType="Self.Ordonnance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordonnance_Medicament" EntityType="Self.Ordonnance_Medicament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient_web" EntityType="Self.Patient_web" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rendez_vous" EntityType="Self.Rendez_vous" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test_Ordonnance" EntityType="Self.Test_Ordonnance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin].[id] AS [id], 
+    [Admin].[nom_admin] AS [nom_admin], 
+    [Admin].[password_admin] AS [password_admin]
+    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Ordonnanc__Id_Do__65370702" Association="Self.FK__Ordonnanc__Id_Do__65370702">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordonnanc__Ord_N__6442E2C9" Association="Self.FK__Ordonnanc__Ord_N__6442E2C9">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Ord_Num__1B0907CE" Association="Self.FK__Patient__Ord_Num__1B0907CE">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rendez_vo__Cin_p__25869641" Association="Self.FK__Rendez_vo__Cin_p__25869641">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rendez_vo__Id_Do__24927208" Association="Self.FK__Rendez_vo__Id_Do__24927208">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Id_Doc__1DE57479" Association="Self.FK__Test__Id_Doc__1DE57479">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Ordo__Ord_N__20C1E124" Association="Self.FK__Test_Ordo__Ord_N__20C1E124">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Ordo__Test___21B6055D" Association="Self.FK__Test_Ordo__Test___21B6055D">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Gestion_HopitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="Id_ag" />
+          </Key>
+          <Property Name="Id_ag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenom_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateNaissance_ag" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adresse_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image_ag" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id_Doc" />
+          </Key>
+          <Property Name="Id_Doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Doc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenom_Doc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateNaissance_Doc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Doc_specialite" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Doc_experience" Type="Int32" Nullable="false" />
+          <Property Name="Doc_phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Doc_addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Doc_pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Doc_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Ordonnance_Medicament" Relationship="Self.FK__Ordonnanc__Id_Do__65370702" FromRole="Doctor" ToRole="Ordonnance_Medicament" />
+          <NavigationProperty Name="Rendez_vous" Relationship="Self.FK__Rendez_vo__Id_Do__24927208" FromRole="Doctor" ToRole="Rendez_vous" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Test__Id_Doc__1DE57479" FromRole="Doctor" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Ordonnance">
+          <Key>
+            <PropertyRef Name="Ord_Num" />
+          </Key>
+          <Property Name="Ord_Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Maladie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ordonnance_Medicament" Relationship="Self.FK__Ordonnanc__Ord_N__6442E2C9" FromRole="Ordonnance" ToRole="Ordonnance_Medicament" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Ord_Num__1B0907CE" FromRole="Ordonnance" ToRole="Patient" />
+          <NavigationProperty Name="Test_Ordonnance" Relationship="Self.FK__Test_Ordo__Ord_N__20C1E124" FromRole="Ordonnance" ToRole="Test_Ordonnance" />
+        </EntityType>
+        <EntityType Name="Ordonnance_Medicament">
+          <Key>
+            <PropertyRef Name="id_ord_med" />
+          </Key>
+          <Property Name="id_ord_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantite" Type="Int32" />
+          <Property Name="NbrJr" Type="Int32" />
+          <Property Name="Nom_medic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Ord_Num" Type="Int32" />
+          <Property Name="Id_Doc" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Ordonnanc__Id_Do__65370702" FromRole="Ordonnance_Medicament" ToRole="Doctor" />
+          <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Ordonnanc__Ord_N__6442E2C9" FromRole="Ordonnance_Medicament" ToRole="Ordonnance" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Cin_pat" />
+          </Key>
+          <Property Name="Cin_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nom_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenom_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Genre_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateNaissance_pat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adresse_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image_pat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Ord_Num" Type="Int32" />
+          <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Patient__Ord_Num__1B0907CE" FromRole="Patient" ToRole="Ordonnance" />
+          <NavigationProperty Name="Rendez_vous" Relationship="Self.FK__Rendez_vo__Cin_p__25869641" FromRole="Patient" ToRole="Rendez_vous" />
+        </EntityType>
+        <EntityType Name="Patient_web">
+          <Key>
+            <PropertyRef Name="cin" />
+          </Key>
+          <Property Name="cin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tele" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_re" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Rendez_vous">
+          <Key>
+            <PropertyRef Name="Id_rdv" />
+          </Key>
+          <Property Name="Id_rdv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_rdv" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Heure_rdv" Type="Int32" Nullable="false" />
+          <Property Name="Id_Doc" Type="Int32" Nullable="false" />
+          <Property Name="Cin_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Rendez_vo__Id_Do__24927208" FromRole="Rendez_vous" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Rendez_vo__Cin_p__25869641" FromRole="Rendez_vous" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_num" />
+          </Key>
+          <Property Name="Test_num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_test" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prix_test" Type="Int32" Nullable="false" />
+          <Property Name="Id_Doc" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Test__Id_Doc__1DE57479" FromRole="Test" ToRole="Doctor" />
+          <NavigationProperty Name="Test_Ordonnance" Relationship="Self.FK__Test_Ordo__Test___21B6055D" FromRole="Test" ToRole="Test_Ordonnance" />
+        </EntityType>
+        <EntityType Name="Test_Ordonnance">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ord_Num" Type="Int32" />
+          <Property Name="Test_num" Type="Int32" />
+          <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Test_Ordo__Ord_N__20C1E124" FromRole="Test_Ordonnance" ToRole="Ordonnance" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Test_Ordo__Test___21B6055D" FromRole="Test_Ordonnance" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_admin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="password_admin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Ordonnanc__Id_Do__65370702">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Ordonnance_Medicament">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rendez_vo__Id_Do__24927208">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Rendez_vous">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Id_Doc__1DE57479">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_Doc" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Id_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordonnanc__Ord_N__6442E2C9">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Ordonnance_Medicament">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Ord_Num__1B0907CE">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Ordo__Ord_N__20C1E124">
+          <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Principal>
+            <Dependent Role="Test_Ordonnance">
+              <PropertyRef Name="Ord_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rendez_vo__Cin_p__25869641">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Cin_pat" />
+            </Principal>
+            <Dependent Role="Rendez_vous">
+              <PropertyRef Name="Cin_pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Ordo__Test___21B6055D">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_num" />
+            </Principal>
+            <Dependent Role="Test_Ordonnance">
+              <PropertyRef Name="Test_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Gestion_HopitalEntities16" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agent" EntityType="Self.Agent" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+          <EntitySet Name="Ordonnance" EntityType="Self.Ordonnance" />
+          <EntitySet Name="Ordonnance_Medicament" EntityType="Self.Ordonnance_Medicament" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="Patient_web" EntityType="Self.Patient_web" />
+          <EntitySet Name="Rendez_vous" EntityType="Self.Rendez_vous" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Test" EntityType="Self.Test" />
+          <EntitySet Name="Test_Ordonnance" EntityType="Self.Test_Ordonnance" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <AssociationSet Name="FK__Ordonnanc__Id_Do__65370702" Association="Self.FK__Ordonnanc__Id_Do__65370702">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rendez_vo__Id_Do__24927208" Association="Self.FK__Rendez_vo__Id_Do__24927208">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Id_Doc__1DE57479" Association="Self.FK__Test__Id_Doc__1DE57479">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordonnanc__Ord_N__6442E2C9" Association="Self.FK__Ordonnanc__Ord_N__6442E2C9">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Ord_Num__1B0907CE" Association="Self.FK__Patient__Ord_Num__1B0907CE">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Ordo__Ord_N__20C1E124" Association="Self.FK__Test_Ordo__Ord_N__20C1E124">
+            <End Role="Ordonnance" EntitySet="Ordonnance" />
+            <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rendez_vo__Cin_p__25869641" Association="Self.FK__Rendez_vo__Cin_p__25869641">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Ordo__Test___21B6055D" Association="Self.FK__Test_Ordo__Test___21B6055D">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+          </AssociationSet>
+          <FunctionImport Name="Afficher_Patient" ReturnType="Collection(Gestion_HopitalModel.Afficher_Patient_Result)" />
+          <FunctionImport Name="Afficher_Rdv" ReturnType="Collection(Gestion_HopitalModel.Afficher_Rdv_Result)" />
+          <FunctionImport Name="AfficherFullName_Doc" ReturnType="Collection(Gestion_HopitalModel.AfficherFullName_Doc_Result)" />
+          <FunctionImport Name="AfficherMedic" />
+          <FunctionImport Name="AfficherOrdonnanceMedicament" ReturnType="Collection(Gestion_HopitalModel.AfficherOrdonnanceMedicament_Result)" />
+          <FunctionImport Name="AfficherTest" ReturnType="Collection(Gestion_HopitalModel.AfficherTest_Result)" />
+          <FunctionImport Name="Ajouter_Agent">
+            <Parameter Name="nom_ag" Mode="In" Type="String" />
+            <Parameter Name="prenom_ag" Mode="In" Type="String" />
+            <Parameter Name="phone_ag" Mode="In" Type="String" />
+            <Parameter Name="date_ag" Mode="In" Type="DateTime" />
+            <Parameter Name="adresse_ag" Mode="In" Type="String" />
+            <Parameter Name="password_ag" Mode="In" Type="String" />
+            <Parameter Name="image_ag" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Ajouter_Docteur">
+            <Parameter Name="nom_doc" Mode="In" Type="String" />
+            <Parameter Name="prenom_doc" Mode="In" Type="String" />
+            <Parameter Name="date_doc" Mode="In" Type="DateTime" />
+            <Parameter Name="spec_doc" Mode="In" Type="String" />
+            <Parameter Name="expe_doc" Mode="In" Type="Int32" />
+            <Parameter Name="phone_doc" Mode="In" Type="String" />
+            <Parameter Name="adresse_doc" Mode="In" Type="String" />
+            <Parameter Name="doc_pass" Mode="In" Type="String" />
+            <Parameter Name="doc_image" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Ajouter_Ord_Medicament">
+            <Parameter Name="qte" Mode="In" Type="Int32" />
+            <Parameter Name="nbr_jr" Mode="In" Type="Int32" />
+            <Parameter Name="nom_medic" Mode="In" Type="String" />
+            <Parameter Name="ord_num" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ajouter_Patient">
+            <Parameter Name="cin_pat" Mode="In" Type="String" />
+            <Parameter Name="nom_pat" Mode="In" Type="String" />
+            <Parameter Name="prenom_pat" Mode="In" Type="String" />
+            <Parameter Name="genre_pat" Mode="In" Type="String" />
+            <Parameter Name="date_pat" Mode="In" Type="DateTime" />
+            <Parameter Name="adresse_pat" Mode="In" Type="String" />
+            <Parameter Name="phone_pat" Mode="In" Type="String" />
+            <Parameter Name="image_pat" Mode="In" Type="Binary" />
+            <Parameter Name="maladie_pat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ajouter_Rdv">
+            <Parameter Name="date_rdv" Mode="In" Type="DateTime" />
+            <Parameter Name="heure_rdv" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+            <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ajouter_rePatient_web">
+            <Parameter Name="cin" Mode="In" Type="String" />
+            <Parameter Name="nom" Mode="In" Type="String" />
+            <Parameter Name="prenom" Mode="In" Type="String" />
+            <Parameter Name="tele" Mode="In" Type="String" />
+            <Parameter Name="date_re" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AjouterTest">
+            <Parameter Name="nom_test" Mode="In" Type="String" />
+            <Parameter Name="prix_test" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Modifier_Agent">
+            <Parameter Name="id_ag" Mode="In" Type="Int32" />
+            <Parameter Name="nom_ag" Mode="In" Type="String" />
+            <Parameter Name="prenom_ag" Mode="In" Type="String" />
+            <Parameter Name="phone_ag" Mode="In" Type="String" />
+            <Parameter Name="date_ag" Mode="In" Type="DateTime" />
+            <Parameter Name="adresse_ag" Mode="In" Type="String" />
+            <Parameter Name="password_ag" Mode="In" Type="String" />
+            <Parameter Name="image_ag" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Modifier_Docteur">
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+            <Parameter Name="nom_doc" Mode="In" Type="String" />
+            <Parameter Name="prenom_doc" Mode="In" Type="String" />
+            <Parameter Name="date_doc" Mode="In" Type="DateTime" />
+            <Parameter Name="spec_doc" Mode="In" Type="String" />
+            <Parameter Name="expe_doc" Mode="In" Type="Int32" />
+            <Parameter Name="phone_doc" Mode="In" Type="String" />
+            <Parameter Name="adresse_doc" Mode="In" Type="String" />
+            <Parameter Name="doc_pass" Mode="In" Type="String" />
+            <Parameter Name="image_doc" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Modifier_Patient">
+            <Parameter Name="cin_pat" Mode="In" Type="String" />
+            <Parameter Name="nom_pat" Mode="In" Type="String" />
+            <Parameter Name="prenom_pat" Mode="In" Type="String" />
+            <Parameter Name="genre_pat" Mode="In" Type="String" />
+            <Parameter Name="date_pat" Mode="In" Type="DateTime" />
+            <Parameter Name="adresse_pat" Mode="In" Type="String" />
+            <Parameter Name="phone_pat" Mode="In" Type="String" />
+            <Parameter Name="maladie_pat" Mode="In" Type="Int32" />
+            <Parameter Name="image_pat" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Modifier_Rdv">
+            <Parameter Name="date_rdv" Mode="In" Type="DateTime" />
+            <Parameter Name="heure_rdv" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+            <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Modifier_rePatient_web">
+            <Parameter Name="cin" Mode="In" Type="String" />
+            <Parameter Name="nom" Mode="In" Type="String" />
+            <Parameter Name="prenom" Mode="In" Type="String" />
+            <Parameter Name="tele" Mode="In" Type="String" />
+            <Parameter Name="date_re" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ModifierOrd_Medicament">
+            <Parameter Name="qte" Mode="In" Type="Int32" />
+            <Parameter Name="nbr_jr" Mode="In" Type="Int32" />
+            <Parameter Name="nom_medic" Mode="In" Type="String" />
+            <Parameter Name="ord_num" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifierTest">
+            <Parameter Name="nom_test" Mode="In" Type="String" />
+            <Parameter Name="prix_test" Mode="In" Type="Int32" />
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Recherche_Docteur" ReturnType="Collection(Gestion_HopitalModel.Recherche_Docteur_Result)">
+          <Parameter Name="nom_doc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Recherche_Patient_CIN" ReturnType="Collection(Gestion_HopitalModel.Recherche_Patient_CIN_Result)">
+          <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Recherche_Patient_Prenom" ReturnType="Collection(Gestion_HopitalModel.Recherche_Patient_Prenom_Result)">
+          <Parameter Name="nom_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Recherche_Rdv_Date" ReturnType="Collection(Gestion_HopitalModel.Recherche_Rdv_Date_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RechercherNomTest" ReturnType="Collection(Gestion_HopitalModel.RechercherNomTest_Result)">
+          <Parameter Name="nom_test" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RechercherOrd_Medicament_Nom">
+          <Parameter Name="Nom_medic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="rechercherRdvDoc_CIN" ReturnType="Collection(Gestion_HopitalModel.rechercherRdvDoc_CIN_Result)">
+          <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RechercherTestDocNom" ReturnType="Collection(Gestion_HopitalModel.RechercherTestDocNom_Result)">
+          <Parameter Name="nom_doc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Gestion_HopitalModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Gestion_HopitalModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Supprimer_Agent">
+          <Parameter Name="id_ag" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Supprimer_Docteur">
+          <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Supprimer_Patient">
+          <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supprimer_Rdv">
+          <Parameter Name="cin_pat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supprimer_rePatient_web">
+          <Parameter Name="cin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SupprimerOrd_Medicament">
+          <Parameter Name="id_doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SupprimerTest">
+            <Parameter Name="id_doc" Mode="In" Type="Int32" />
+            <Parameter Name="nom_test" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AfficherOrdonnanceMedicamentPrint" ReturnType="Collection(Gestion_HopitalModel.AfficherOrdonnanceMedicamentPrint_Result)">
+          <Parameter Name="id_om" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Afficher_Patient_Result">
+          <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+          <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Afficher_Rdv_Result">
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Heure" Nullable="false" />
+          <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="AfficherFullName_Doc_Result">
+          <Property Type="Int32" Name="Id_Doc" Nullable="false" />
+          <Property Type="String" Name="Fullname" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="AfficherOrdonnanceMedicament_Result">
+          <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nom_medicament" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantite" Nullable="true" />
+          <Property Type="Int32" Name="Nombre_Jour" Nullable="true" />
+          <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="AfficherTest_Result">
+          <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Prix" Nullable="false" />
+          <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="Recherche_Docteur_Result">
+          <Property Type="Int32" Name="Id_Doc" Nullable="false" />
+          <Property Type="String" Name="Nom_Doc" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Prenom_Doc" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="DateNaissance_Doc" Nullable="false" />
+          <Property Type="String" Name="Doc_specialite" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Doc_experience" Nullable="false" />
+          <Property Type="String" Name="Doc_phone" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Doc_addr" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Doc_pass" Nullable="false" MaxLength="30" />
+          <Property Type="Binary" Name="Doc_Image" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Recherche_Patient_CIN_Result">
+          <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+          <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Recherche_Patient_Prenom_Result">
+          <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+          <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Recherche_Rdv_Date_Result">
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Heure" Nullable="false" />
+          <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="RechercherNomTest_Result">
+          <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Prix" Nullable="false" />
+          <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="rechercherRdvDoc_CIN_Result">
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Heure" Nullable="false" />
+          <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="RechercherTestDocNom_Result">
+          <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Prix" Nullable="false" />
+          <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="AfficherOrdonnanceMedicamentPrint_Result">
+          <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nom_medicament" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantite" Nullable="true" />
+          <Property Type="Int32" Name="Nombre_Jour" Nullable="true" />
+          <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Gestion_HopitalModelStoreContainer" CdmEntityContainer="Gestion_HopitalEntities16">
+          <EntitySetMapping Name="Agent">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Agent">
+              <MappingFragment StoreEntitySet="Agent">
+                <ScalarProperty Name="Id_ag" ColumnName="Id_ag" />
+                <ScalarProperty Name="Nom_ag" ColumnName="Nom_ag" />
+                <ScalarProperty Name="Prenom_ag" ColumnName="Prenom_ag" />
+                <ScalarProperty Name="Phone_ag" ColumnName="Phone_ag" />
+                <ScalarProperty Name="DateNaissance_ag" ColumnName="DateNaissance_ag" />
+                <ScalarProperty Name="Adresse_ag" ColumnName="Adresse_ag" />
+                <ScalarProperty Name="Password_ag" ColumnName="Password_ag" />
+                <ScalarProperty Name="Image_ag" ColumnName="Image_ag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctor">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+                <ScalarProperty Name="Nom_Doc" ColumnName="Nom_Doc" />
+                <ScalarProperty Name="Prenom_Doc" ColumnName="Prenom_Doc" />
+                <ScalarProperty Name="DateNaissance_Doc" ColumnName="DateNaissance_Doc" />
+                <ScalarProperty Name="Doc_specialite" ColumnName="Doc_specialite" />
+                <ScalarProperty Name="Doc_experience" ColumnName="Doc_experience" />
+                <ScalarProperty Name="Doc_phone" ColumnName="Doc_phone" />
+                <ScalarProperty Name="Doc_addr" ColumnName="Doc_addr" />
+                <ScalarProperty Name="Doc_pass" ColumnName="Doc_pass" />
+                <ScalarProperty Name="Doc_Image" ColumnName="Doc_Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordonnance">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Ordonnance">
+              <MappingFragment StoreEntitySet="Ordonnance">
+                <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordonnance_Medicament">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Ordonnance_Medicament">
+              <MappingFragment StoreEntitySet="Ordonnance_Medicament">
+                <ScalarProperty Name="id_ord_med" ColumnName="id_ord_med" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="NbrJr" ColumnName="NbrJr" />
+                <ScalarProperty Name="Nom_medic" ColumnName="Nom_medic" />
+                <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+                <ScalarProperty Name="Nom_pat" ColumnName="Nom_pat" />
+                <ScalarProperty Name="Prenom_pat" ColumnName="Prenom_pat" />
+                <ScalarProperty Name="Genre_pat" ColumnName="Genre_pat" />
+                <ScalarProperty Name="DateNaissance_pat" ColumnName="DateNaissance_pat" />
+                <ScalarProperty Name="Adresse_pat" ColumnName="Adresse_pat" />
+                <ScalarProperty Name="Phone_pat" ColumnName="Phone_pat" />
+                <ScalarProperty Name="Image_pat" ColumnName="Image_pat" />
+                <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient_web">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Patient_web">
+              <MappingFragment StoreEntitySet="Patient_web">
+                <ScalarProperty Name="cin" ColumnName="cin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="tele" ColumnName="tele" />
+                <ScalarProperty Name="date_re" ColumnName="date_re" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rendez_vous">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Rendez_vous">
+              <MappingFragment StoreEntitySet="Rendez_vous">
+                <ScalarProperty Name="Id_rdv" ColumnName="Id_rdv" />
+                <ScalarProperty Name="Date_rdv" ColumnName="Date_rdv" />
+                <ScalarProperty Name="Heure_rdv" ColumnName="Heure_rdv" />
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+                <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Test_num" ColumnName="Test_num" />
+                <ScalarProperty Name="Nom_test" ColumnName="Nom_test" />
+                <ScalarProperty Name="Prix_test" ColumnName="Prix_test" />
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Ordonnance">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Test_Ordonnance">
+              <MappingFragment StoreEntitySet="Test_Ordonnance">
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+                <ScalarProperty Name="Test_num" ColumnName="Test_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="Gestion_HopitalModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom_admin" ColumnName="nom_admin" />
+                <ScalarProperty Name="password_admin" ColumnName="password_admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Afficher_Patient" FunctionName="Gestion_HopitalModel.Store.Afficher_Patient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Afficher_Patient_Result">
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Afficher_Rdv" FunctionName="Gestion_HopitalModel.Store.Afficher_Rdv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Afficher_Rdv_Result">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Heure" ColumnName="Heure" />
+                <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+                <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AfficherFullName_Doc" FunctionName="Gestion_HopitalModel.Store.AfficherFullName_Doc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherFullName_Doc_Result">
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AfficherMedic" FunctionName="Gestion_HopitalModel.Store.AfficherMedic" />
+          <FunctionImportMapping FunctionImportName="AfficherOrdonnanceMedicament" FunctionName="Gestion_HopitalModel.Store.AfficherOrdonnanceMedicament">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherOrdonnanceMedicament_Result">
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+                <ScalarProperty Name="Nom_medicament" ColumnName="Nom medicament" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="Nombre_Jour" ColumnName="Nombre Jour" />
+                <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AfficherTest" FunctionName="Gestion_HopitalModel.Store.AfficherTest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherTest_Result">
+                <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ajouter_Agent" FunctionName="Gestion_HopitalModel.Store.Ajouter_Agent" />
+          <FunctionImportMapping FunctionImportName="Ajouter_Docteur" FunctionName="Gestion_HopitalModel.Store.Ajouter_Docteur" />
+          <FunctionImportMapping FunctionImportName="Ajouter_Ord_Medicament" FunctionName="Gestion_HopitalModel.Store.Ajouter_Ord_Medicament" />
+          <FunctionImportMapping FunctionImportName="Ajouter_Patient" FunctionName="Gestion_HopitalModel.Store.Ajouter_Patient" />
+          <FunctionImportMapping FunctionImportName="Ajouter_Rdv" FunctionName="Gestion_HopitalModel.Store.Ajouter_Rdv" />
+          <FunctionImportMapping FunctionImportName="ajouter_rePatient_web" FunctionName="Gestion_HopitalModel.Store.ajouter_rePatient_web" />
+          <FunctionImportMapping FunctionImportName="AjouterTest" FunctionName="Gestion_HopitalModel.Store.AjouterTest" />
+          <FunctionImportMapping FunctionImportName="Modifier_Agent" FunctionName="Gestion_HopitalModel.Store.Modifier_Agent" />
+          <FunctionImportMapping FunctionImportName="Modifier_Docteur" FunctionName="Gestion_HopitalModel.Store.Modifier_Docteur" />
+          <FunctionImportMapping FunctionImportName="Modifier_Patient" FunctionName="Gestion_HopitalModel.Store.Modifier_Patient" />
+          <FunctionImportMapping FunctionImportName="Modifier_Rdv" FunctionName="Gestion_HopitalModel.Store.Modifier_Rdv" />
+          <FunctionImportMapping FunctionImportName="Modifier_rePatient_web" FunctionName="Gestion_HopitalModel.Store.Modifier_rePatient_web" />
+          <FunctionImportMapping FunctionImportName="ModifierOrd_Medicament" FunctionName="Gestion_HopitalModel.Store.ModifierOrd_Medicament" />
+          <FunctionImportMapping FunctionImportName="ModifierTest" FunctionName="Gestion_HopitalModel.Store.ModifierTest" />
+          <FunctionImportMapping FunctionImportName="Recherche_Docteur" FunctionName="Gestion_HopitalModel.Store.Recherche_Docteur">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Docteur_Result">
+                <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+                <ScalarProperty Name="Nom_Doc" ColumnName="Nom_Doc" />
+                <ScalarProperty Name="Prenom_Doc" ColumnName="Prenom_Doc" />
+                <ScalarProperty Name="DateNaissance_Doc" ColumnName="DateNaissance_Doc" />
+                <ScalarProperty Name="Doc_specialite" ColumnName="Doc_specialite" />
+                <ScalarProperty Name="Doc_experience" ColumnName="Doc_experience" />
+                <ScalarProperty Name="Doc_phone" ColumnName="Doc_phone" />
+                <ScalarProperty Name="Doc_addr" ColumnName="Doc_addr" />
+                <ScalarProperty Name="Doc_pass" ColumnName="Doc_pass" />
+                <ScalarProperty Name="Doc_Image" ColumnName="Doc_Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Recherche_Patient_CIN" FunctionName="Gestion_HopitalModel.Store.Recherche_Patient_CIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Patient_CIN_Result">
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Recherche_Patient_Prenom" FunctionName="Gestion_HopitalModel.Store.Recherche_Patient_Prenom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Patient_Prenom_Result">
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Recherche_Rdv_Date" FunctionName="Gestion_HopitalModel.Store.Recherche_Rdv_Date">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Rdv_Date_Result">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Heure" ColumnName="Heure" />
+                <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+                <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RechercherNomTest" FunctionName="Gestion_HopitalModel.Store.RechercherNomTest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.RechercherNomTest_Result">
+                <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RechercherOrd_Medicament_Nom" FunctionName="Gestion_HopitalModel.Store.RechercherOrd_Medicament_Nom" />
+          <FunctionImportMapping FunctionImportName="rechercherRdvDoc_CIN" FunctionName="Gestion_HopitalModel.Store.rechercherRdvDoc_CIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.rechercherRdvDoc_CIN_Result">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Heure" ColumnName="Heure" />
+                <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+                <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RechercherTestDocNom" FunctionName="Gestion_HopitalModel.Store.RechercherTestDocNom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.RechercherTestDocNom_Result">
+                <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Gestion_HopitalModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Gestion_HopitalModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Gestion_HopitalModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Gestion_HopitalModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Gestion_HopitalModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Gestion_HopitalModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Gestion_HopitalModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Supprimer_Agent" FunctionName="Gestion_HopitalModel.Store.Supprimer_Agent" />
+          <FunctionImportMapping FunctionImportName="Supprimer_Docteur" FunctionName="Gestion_HopitalModel.Store.Supprimer_Docteur" />
+          <FunctionImportMapping FunctionImportName="Supprimer_Patient" FunctionName="Gestion_HopitalModel.Store.Supprimer_Patient" />
+          <FunctionImportMapping FunctionImportName="Supprimer_Rdv" FunctionName="Gestion_HopitalModel.Store.Supprimer_Rdv" />
+          <FunctionImportMapping FunctionImportName="Supprimer_rePatient_web" FunctionName="Gestion_HopitalModel.Store.Supprimer_rePatient_web" />
+          <FunctionImportMapping FunctionImportName="SupprimerOrd_Medicament" FunctionName="Gestion_HopitalModel.Store.SupprimerOrd_Medicament" />
+          <FunctionImportMapping FunctionImportName="SupprimerTest" FunctionName="Gestion_HopitalModel.Store.SupprimerTest" />
+          <FunctionImportMapping FunctionImportName="AfficherOrdonnanceMedicamentPrint" FunctionName="Gestion_HopitalModel.Store.AfficherOrdonnanceMedicamentPrint">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherOrdonnanceMedicamentPrint_Result">
+                <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+                <ScalarProperty Name="Nom_medicament" ColumnName="Nom medicament" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="Nombre_Jour" ColumnName="Nombre Jour" />
+                <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

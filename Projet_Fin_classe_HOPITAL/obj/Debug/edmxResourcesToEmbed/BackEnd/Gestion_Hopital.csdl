@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gestion_HopitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="Id_ag" />
+    </Key>
+    <Property Name="Id_ag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateNaissance_ag" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adresse_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password_ag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image_ag" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Id_Doc" />
+    </Key>
+    <Property Name="Id_Doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_Doc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom_Doc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateNaissance_Doc" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Doc_specialite" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Doc_experience" Type="Int32" Nullable="false" />
+    <Property Name="Doc_phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Doc_addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Doc_pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Doc_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Ordonnance_Medicament" Relationship="Self.FK__Ordonnanc__Id_Do__65370702" FromRole="Doctor" ToRole="Ordonnance_Medicament" />
+    <NavigationProperty Name="Rendez_vous" Relationship="Self.FK__Rendez_vo__Id_Do__24927208" FromRole="Doctor" ToRole="Rendez_vous" />
+    <NavigationProperty Name="Test" Relationship="Self.FK__Test__Id_Doc__1DE57479" FromRole="Doctor" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Ordonnance">
+    <Key>
+      <PropertyRef Name="Ord_Num" />
+    </Key>
+    <Property Name="Ord_Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Maladie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ordonnance_Medicament" Relationship="Self.FK__Ordonnanc__Ord_N__6442E2C9" FromRole="Ordonnance" ToRole="Ordonnance_Medicament" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Ord_Num__1B0907CE" FromRole="Ordonnance" ToRole="Patient" />
+    <NavigationProperty Name="Test_Ordonnance" Relationship="Self.FK__Test_Ordo__Ord_N__20C1E124" FromRole="Ordonnance" ToRole="Test_Ordonnance" />
+  </EntityType>
+  <EntityType Name="Ordonnance_Medicament">
+    <Key>
+      <PropertyRef Name="id_ord_med" />
+    </Key>
+    <Property Name="id_ord_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantite" Type="Int32" />
+    <Property Name="NbrJr" Type="Int32" />
+    <Property Name="Nom_medic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Ord_Num" Type="Int32" />
+    <Property Name="Id_Doc" Type="Int32" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK__Ordonnanc__Id_Do__65370702" FromRole="Ordonnance_Medicament" ToRole="Doctor" />
+    <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Ordonnanc__Ord_N__6442E2C9" FromRole="Ordonnance_Medicament" ToRole="Ordonnance" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Cin_pat" />
+    </Key>
+    <Property Name="Cin_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nom_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Genre_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateNaissance_pat" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adresse_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image_pat" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Ord_Num" Type="Int32" />
+    <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Patient__Ord_Num__1B0907CE" FromRole="Patient" ToRole="Ordonnance" />
+    <NavigationProperty Name="Rendez_vous" Relationship="Self.FK__Rendez_vo__Cin_p__25869641" FromRole="Patient" ToRole="Rendez_vous" />
+  </EntityType>
+  <EntityType Name="Patient_web">
+    <Key>
+      <PropertyRef Name="cin" />
+    </Key>
+    <Property Name="cin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tele" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_re" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Rendez_vous">
+    <Key>
+      <PropertyRef Name="Id_rdv" />
+    </Key>
+    <Property Name="Id_rdv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_rdv" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Heure_rdv" Type="Int32" Nullable="false" />
+    <Property Name="Id_Doc" Type="Int32" Nullable="false" />
+    <Property Name="Cin_pat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK__Rendez_vo__Id_Do__24927208" FromRole="Rendez_vous" ToRole="Doctor" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Rendez_vo__Cin_p__25869641" FromRole="Rendez_vous" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Test_num" />
+    </Key>
+    <Property Name="Test_num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_test" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prix_test" Type="Int32" Nullable="false" />
+    <Property Name="Id_Doc" Type="Int32" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK__Test__Id_Doc__1DE57479" FromRole="Test" ToRole="Doctor" />
+    <NavigationProperty Name="Test_Ordonnance" Relationship="Self.FK__Test_Ordo__Test___21B6055D" FromRole="Test" ToRole="Test_Ordonnance" />
+  </EntityType>
+  <EntityType Name="Test_Ordonnance">
+    <Key>
+      <PropertyRef Name="num" />
+    </Key>
+    <Property Name="num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ord_Num" Type="Int32" />
+    <Property Name="Test_num" Type="Int32" />
+    <NavigationProperty Name="Ordonnance" Relationship="Self.FK__Test_Ordo__Ord_N__20C1E124" FromRole="Test_Ordonnance" ToRole="Ordonnance" />
+    <NavigationProperty Name="Test" Relationship="Self.FK__Test_Ordo__Test___21B6055D" FromRole="Test_Ordonnance" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_admin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="password_admin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Ordonnanc__Id_Do__65370702">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id_Doc" />
+      </Principal>
+      <Dependent Role="Ordonnance_Medicament">
+        <PropertyRef Name="Id_Doc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rendez_vo__Id_Do__24927208">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id_Doc" />
+      </Principal>
+      <Dependent Role="Rendez_vous">
+        <PropertyRef Name="Id_Doc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Test__Id_Doc__1DE57479">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Test" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id_Doc" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="Id_Doc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ordonnanc__Ord_N__6442E2C9">
+    <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ordonnance_Medicament" Type="Self.Ordonnance_Medicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordonnance">
+        <PropertyRef Name="Ord_Num" />
+      </Principal>
+      <Dependent Role="Ordonnance_Medicament">
+        <PropertyRef Name="Ord_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Patient__Ord_Num__1B0907CE">
+    <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordonnance">
+        <PropertyRef Name="Ord_Num" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="Ord_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Test_Ordo__Ord_N__20C1E124">
+    <End Role="Ordonnance" Type="Self.Ordonnance" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordonnance">
+        <PropertyRef Name="Ord_Num" />
+      </Principal>
+      <Dependent Role="Test_Ordonnance">
+        <PropertyRef Name="Ord_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rendez_vo__Cin_p__25869641">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rendez_vous" Type="Self.Rendez_vous" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Cin_pat" />
+      </Principal>
+      <Dependent Role="Rendez_vous">
+        <PropertyRef Name="Cin_pat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Test_Ordo__Test___21B6055D">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Test_Ordonnance" Type="Self.Test_Ordonnance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Test_num" />
+      </Principal>
+      <Dependent Role="Test_Ordonnance">
+        <PropertyRef Name="Test_num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Gestion_HopitalEntities16" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agent" EntityType="Self.Agent" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+    <EntitySet Name="Ordonnance" EntityType="Self.Ordonnance" />
+    <EntitySet Name="Ordonnance_Medicament" EntityType="Self.Ordonnance_Medicament" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" />
+    <EntitySet Name="Patient_web" EntityType="Self.Patient_web" />
+    <EntitySet Name="Rendez_vous" EntityType="Self.Rendez_vous" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Test" EntityType="Self.Test" />
+    <EntitySet Name="Test_Ordonnance" EntityType="Self.Test_Ordonnance" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <AssociationSet Name="FK__Ordonnanc__Id_Do__65370702" Association="Self.FK__Ordonnanc__Id_Do__65370702">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rendez_vo__Id_Do__24927208" Association="Self.FK__Rendez_vo__Id_Do__24927208">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Test__Id_Doc__1DE57479" Association="Self.FK__Test__Id_Doc__1DE57479">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ordonnanc__Ord_N__6442E2C9" Association="Self.FK__Ordonnanc__Ord_N__6442E2C9">
+      <End Role="Ordonnance" EntitySet="Ordonnance" />
+      <End Role="Ordonnance_Medicament" EntitySet="Ordonnance_Medicament" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Patient__Ord_Num__1B0907CE" Association="Self.FK__Patient__Ord_Num__1B0907CE">
+      <End Role="Ordonnance" EntitySet="Ordonnance" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Test_Ordo__Ord_N__20C1E124" Association="Self.FK__Test_Ordo__Ord_N__20C1E124">
+      <End Role="Ordonnance" EntitySet="Ordonnance" />
+      <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rendez_vo__Cin_p__25869641" Association="Self.FK__Rendez_vo__Cin_p__25869641">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Rendez_vous" EntitySet="Rendez_vous" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Test_Ordo__Test___21B6055D" Association="Self.FK__Test_Ordo__Test___21B6055D">
+      <End Role="Test" EntitySet="Test" />
+      <End Role="Test_Ordonnance" EntitySet="Test_Ordonnance" />
+    </AssociationSet>
+    <FunctionImport Name="Afficher_Patient" ReturnType="Collection(Gestion_HopitalModel.Afficher_Patient_Result)" />
+    <FunctionImport Name="Afficher_Rdv" ReturnType="Collection(Gestion_HopitalModel.Afficher_Rdv_Result)" />
+    <FunctionImport Name="AfficherFullName_Doc" ReturnType="Collection(Gestion_HopitalModel.AfficherFullName_Doc_Result)" />
+    <FunctionImport Name="AfficherMedic" />
+    <FunctionImport Name="AfficherOrdonnanceMedicament" ReturnType="Collection(Gestion_HopitalModel.AfficherOrdonnanceMedicament_Result)" />
+    <FunctionImport Name="AfficherTest" ReturnType="Collection(Gestion_HopitalModel.AfficherTest_Result)" />
+    <FunctionImport Name="Ajouter_Agent">
+      <Parameter Name="nom_ag" Mode="In" Type="String" />
+      <Parameter Name="prenom_ag" Mode="In" Type="String" />
+      <Parameter Name="phone_ag" Mode="In" Type="String" />
+      <Parameter Name="date_ag" Mode="In" Type="DateTime" />
+      <Parameter Name="adresse_ag" Mode="In" Type="String" />
+      <Parameter Name="password_ag" Mode="In" Type="String" />
+      <Parameter Name="image_ag" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="Ajouter_Docteur">
+      <Parameter Name="nom_doc" Mode="In" Type="String" />
+      <Parameter Name="prenom_doc" Mode="In" Type="String" />
+      <Parameter Name="date_doc" Mode="In" Type="DateTime" />
+      <Parameter Name="spec_doc" Mode="In" Type="String" />
+      <Parameter Name="expe_doc" Mode="In" Type="Int32" />
+      <Parameter Name="phone_doc" Mode="In" Type="String" />
+      <Parameter Name="adresse_doc" Mode="In" Type="String" />
+      <Parameter Name="doc_pass" Mode="In" Type="String" />
+      <Parameter Name="doc_image" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="Ajouter_Ord_Medicament">
+      <Parameter Name="qte" Mode="In" Type="Int32" />
+      <Parameter Name="nbr_jr" Mode="In" Type="Int32" />
+      <Parameter Name="nom_medic" Mode="In" Type="String" />
+      <Parameter Name="ord_num" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ajouter_Patient">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+      <Parameter Name="nom_pat" Mode="In" Type="String" />
+      <Parameter Name="prenom_pat" Mode="In" Type="String" />
+      <Parameter Name="genre_pat" Mode="In" Type="String" />
+      <Parameter Name="date_pat" Mode="In" Type="DateTime" />
+      <Parameter Name="adresse_pat" Mode="In" Type="String" />
+      <Parameter Name="phone_pat" Mode="In" Type="String" />
+      <Parameter Name="image_pat" Mode="In" Type="Binary" />
+      <Parameter Name="maladie_pat" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ajouter_Rdv">
+      <Parameter Name="date_rdv" Mode="In" Type="DateTime" />
+      <Parameter Name="heure_rdv" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ajouter_rePatient_web">
+      <Parameter Name="cin" Mode="In" Type="String" />
+      <Parameter Name="nom" Mode="In" Type="String" />
+      <Parameter Name="prenom" Mode="In" Type="String" />
+      <Parameter Name="tele" Mode="In" Type="String" />
+      <Parameter Name="date_re" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="AjouterTest">
+      <Parameter Name="nom_test" Mode="In" Type="String" />
+      <Parameter Name="prix_test" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Modifier_Agent">
+      <Parameter Name="id_ag" Mode="In" Type="Int32" />
+      <Parameter Name="nom_ag" Mode="In" Type="String" />
+      <Parameter Name="prenom_ag" Mode="In" Type="String" />
+      <Parameter Name="phone_ag" Mode="In" Type="String" />
+      <Parameter Name="date_ag" Mode="In" Type="DateTime" />
+      <Parameter Name="adresse_ag" Mode="In" Type="String" />
+      <Parameter Name="password_ag" Mode="In" Type="String" />
+      <Parameter Name="image_ag" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="Modifier_Docteur">
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+      <Parameter Name="nom_doc" Mode="In" Type="String" />
+      <Parameter Name="prenom_doc" Mode="In" Type="String" />
+      <Parameter Name="date_doc" Mode="In" Type="DateTime" />
+      <Parameter Name="spec_doc" Mode="In" Type="String" />
+      <Parameter Name="expe_doc" Mode="In" Type="Int32" />
+      <Parameter Name="phone_doc" Mode="In" Type="String" />
+      <Parameter Name="adresse_doc" Mode="In" Type="String" />
+      <Parameter Name="doc_pass" Mode="In" Type="String" />
+      <Parameter Name="image_doc" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="Modifier_Patient">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+      <Parameter Name="nom_pat" Mode="In" Type="String" />
+      <Parameter Name="prenom_pat" Mode="In" Type="String" />
+      <Parameter Name="genre_pat" Mode="In" Type="String" />
+      <Parameter Name="date_pat" Mode="In" Type="DateTime" />
+      <Parameter Name="adresse_pat" Mode="In" Type="String" />
+      <Parameter Name="phone_pat" Mode="In" Type="String" />
+      <Parameter Name="maladie_pat" Mode="In" Type="Int32" />
+      <Parameter Name="image_pat" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="Modifier_Rdv">
+      <Parameter Name="date_rdv" Mode="In" Type="DateTime" />
+      <Parameter Name="heure_rdv" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Modifier_rePatient_web">
+      <Parameter Name="cin" Mode="In" Type="String" />
+      <Parameter Name="nom" Mode="In" Type="String" />
+      <Parameter Name="prenom" Mode="In" Type="String" />
+      <Parameter Name="tele" Mode="In" Type="String" />
+      <Parameter Name="date_re" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ModifierOrd_Medicament">
+      <Parameter Name="qte" Mode="In" Type="Int32" />
+      <Parameter Name="nbr_jr" Mode="In" Type="Int32" />
+      <Parameter Name="nom_medic" Mode="In" Type="String" />
+      <Parameter Name="ord_num" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ModifierTest">
+      <Parameter Name="nom_test" Mode="In" Type="String" />
+      <Parameter Name="prix_test" Mode="In" Type="Int32" />
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Recherche_Docteur" ReturnType="Collection(Gestion_HopitalModel.Recherche_Docteur_Result)">
+      <Parameter Name="nom_doc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Recherche_Patient_CIN" ReturnType="Collection(Gestion_HopitalModel.Recherche_Patient_CIN_Result)">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Recherche_Patient_Prenom" ReturnType="Collection(Gestion_HopitalModel.Recherche_Patient_Prenom_Result)">
+      <Parameter Name="nom_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Recherche_Rdv_Date" ReturnType="Collection(Gestion_HopitalModel.Recherche_Rdv_Date_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="RechercherNomTest" ReturnType="Collection(Gestion_HopitalModel.RechercherNomTest_Result)">
+      <Parameter Name="nom_test" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RechercherOrd_Medicament_Nom">
+      <Parameter Name="Nom_medic" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rechercherRdvDoc_CIN" ReturnType="Collection(Gestion_HopitalModel.rechercherRdvDoc_CIN_Result)">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RechercherTestDocNom" ReturnType="Collection(Gestion_HopitalModel.RechercherTestDocNom_Result)">
+      <Parameter Name="nom_doc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Gestion_HopitalModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Gestion_HopitalModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Supprimer_Agent">
+      <Parameter Name="id_ag" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Supprimer_Docteur">
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Supprimer_Patient">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supprimer_Rdv">
+      <Parameter Name="cin_pat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supprimer_rePatient_web">
+      <Parameter Name="cin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SupprimerOrd_Medicament">
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SupprimerTest">
+      <Parameter Name="id_doc" Mode="In" Type="Int32" />
+      <Parameter Name="nom_test" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AfficherOrdonnanceMedicamentPrint" ReturnType="Collection(Gestion_HopitalModel.AfficherOrdonnanceMedicamentPrint_Result)">
+      <Parameter Name="id_om" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Afficher_Patient_Result">
+    <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+    <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+    <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Afficher_Rdv_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="Heure" Nullable="false" />
+    <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="AfficherFullName_Doc_Result">
+    <Property Type="Int32" Name="Id_Doc" Nullable="false" />
+    <Property Type="String" Name="Fullname" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="AfficherOrdonnanceMedicament_Result">
+    <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nom_medicament" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Quantite" Nullable="true" />
+    <Property Type="Int32" Name="Nombre_Jour" Nullable="true" />
+    <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="AfficherTest_Result">
+    <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Prix" Nullable="false" />
+    <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="Recherche_Docteur_Result">
+    <Property Type="Int32" Name="Id_Doc" Nullable="false" />
+    <Property Type="String" Name="Nom_Doc" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Prenom_Doc" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="DateNaissance_Doc" Nullable="false" />
+    <Property Type="String" Name="Doc_specialite" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Doc_experience" Nullable="false" />
+    <Property Type="String" Name="Doc_phone" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Doc_addr" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Doc_pass" Nullable="false" MaxLength="30" />
+    <Property Type="Binary" Name="Doc_Image" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Recherche_Patient_CIN_Result">
+    <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+    <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Recherche_Patient_Prenom_Result">
+    <Property Type="String" Name="CIN" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Prénom" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Genre" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="Date_Naissance" Nullable="false" />
+    <Property Type="String" Name="Adresse" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Recherche_Rdv_Date_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="Heure" Nullable="false" />
+    <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="RechercherNomTest_Result">
+    <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Prix" Nullable="false" />
+    <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="rechercherRdvDoc_CIN_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="Heure" Nullable="false" />
+    <Property Type="String" Name="Cin_pat" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="RechercherTestDocNom_Result">
+    <Property Type="String" Name="Nom_Test" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Prix" Nullable="false" />
+    <Property Type="String" Name="Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AfficherOrdonnanceMedicamentPrint_Result">
+    <Property Type="String" Name="Maladie" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nom_medicament" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Quantite" Nullable="true" />
+    <Property Type="Int32" Name="Nombre_Jour" Nullable="true" />
+    <Property Type="String" Name="Nom_Docteur" Nullable="false" MaxLength="61" />
+  </ComplexType>
+</Schema>

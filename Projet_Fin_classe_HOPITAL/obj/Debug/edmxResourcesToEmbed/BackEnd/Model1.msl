@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Gestion_HopitalModelStoreContainer" CdmEntityContainer="Gestion_HopitalEntities15">
+    <EntitySetMapping Name="Agent">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Agent">
+        <MappingFragment StoreEntitySet="Agent">
+          <ScalarProperty Name="Id_ag" ColumnName="Id_ag" />
+          <ScalarProperty Name="Nom_ag" ColumnName="Nom_ag" />
+          <ScalarProperty Name="Prenom_ag" ColumnName="Prenom_ag" />
+          <ScalarProperty Name="Phone_ag" ColumnName="Phone_ag" />
+          <ScalarProperty Name="DateNaissance_ag" ColumnName="DateNaissance_ag" />
+          <ScalarProperty Name="Adresse_ag" ColumnName="Adresse_ag" />
+          <ScalarProperty Name="Password_ag" ColumnName="Password_ag" />
+          <ScalarProperty Name="Image_ag" ColumnName="Image_ag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctor">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+          <ScalarProperty Name="Nom_Doc" ColumnName="Nom_Doc" />
+          <ScalarProperty Name="Prenom_Doc" ColumnName="Prenom_Doc" />
+          <ScalarProperty Name="DateNaissance_Doc" ColumnName="DateNaissance_Doc" />
+          <ScalarProperty Name="Doc_specialite" ColumnName="Doc_specialite" />
+          <ScalarProperty Name="Doc_experience" ColumnName="Doc_experience" />
+          <ScalarProperty Name="Doc_phone" ColumnName="Doc_phone" />
+          <ScalarProperty Name="Doc_addr" ColumnName="Doc_addr" />
+          <ScalarProperty Name="Doc_pass" ColumnName="Doc_pass" />
+          <ScalarProperty Name="Doc_Image" ColumnName="Doc_Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordonnance">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Ordonnance">
+        <MappingFragment StoreEntitySet="Ordonnance">
+          <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+          <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordonnance_Medicament">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Ordonnance_Medicament">
+        <MappingFragment StoreEntitySet="Ordonnance_Medicament">
+          <ScalarProperty Name="id_ord_med" ColumnName="id_ord_med" />
+          <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+          <ScalarProperty Name="NbrJr" ColumnName="NbrJr" />
+          <ScalarProperty Name="Nom_medic" ColumnName="Nom_medic" />
+          <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+          <ScalarProperty Name="Nom_pat" ColumnName="Nom_pat" />
+          <ScalarProperty Name="Prenom_pat" ColumnName="Prenom_pat" />
+          <ScalarProperty Name="Genre_pat" ColumnName="Genre_pat" />
+          <ScalarProperty Name="DateNaissance_pat" ColumnName="DateNaissance_pat" />
+          <ScalarProperty Name="Adresse_pat" ColumnName="Adresse_pat" />
+          <ScalarProperty Name="Phone_pat" ColumnName="Phone_pat" />
+          <ScalarProperty Name="Image_pat" ColumnName="Image_pat" />
+          <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_web">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Patient_web">
+        <MappingFragment StoreEntitySet="Patient_web">
+          <ScalarProperty Name="cin" ColumnName="cin" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="tele" ColumnName="tele" />
+          <ScalarProperty Name="date_re" ColumnName="date_re" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rendez_vous">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Rendez_vous">
+        <MappingFragment StoreEntitySet="Rendez_vous">
+          <ScalarProperty Name="Id_rdv" ColumnName="Id_rdv" />
+          <ScalarProperty Name="Date_rdv" ColumnName="Date_rdv" />
+          <ScalarProperty Name="Heure_rdv" ColumnName="Heure_rdv" />
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+          <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="Test_num" ColumnName="Test_num" />
+          <ScalarProperty Name="Nom_test" ColumnName="Nom_test" />
+          <ScalarProperty Name="Prix_test" ColumnName="Prix_test" />
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test_Ordonnance">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Test_Ordonnance">
+        <MappingFragment StoreEntitySet="Test_Ordonnance">
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="Ord_Num" ColumnName="Ord_Num" />
+          <ScalarProperty Name="Test_num" ColumnName="Test_num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="Gestion_HopitalModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom_admin" ColumnName="nom_admin" />
+          <ScalarProperty Name="password_admin" ColumnName="password_admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Afficher_Patient" FunctionName="Gestion_HopitalModel.Store.Afficher_Patient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Afficher_Patient_Result">
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Afficher_Rdv" FunctionName="Gestion_HopitalModel.Store.Afficher_Rdv">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Afficher_Rdv_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Heure" ColumnName="Heure" />
+          <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+          <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AfficherFullName_Doc" FunctionName="Gestion_HopitalModel.Store.AfficherFullName_Doc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherFullName_Doc_Result">
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AfficherMedic" FunctionName="Gestion_HopitalModel.Store.AfficherMedic" />
+    <FunctionImportMapping FunctionImportName="AfficherOrdonnanceMedicament" FunctionName="Gestion_HopitalModel.Store.AfficherOrdonnanceMedicament">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherOrdonnanceMedicament_Result">
+          <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+          <ScalarProperty Name="Nom_medicament" ColumnName="Nom medicament" />
+          <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+          <ScalarProperty Name="Nombre_Jour" ColumnName="Nombre Jour" />
+          <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AfficherTest" FunctionName="Gestion_HopitalModel.Store.AfficherTest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.AfficherTest_Result">
+          <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ajouter_Agent" FunctionName="Gestion_HopitalModel.Store.Ajouter_Agent" />
+    <FunctionImportMapping FunctionImportName="Ajouter_Docteur" FunctionName="Gestion_HopitalModel.Store.Ajouter_Docteur" />
+    <FunctionImportMapping FunctionImportName="Ajouter_Ord_Medicament" FunctionName="Gestion_HopitalModel.Store.Ajouter_Ord_Medicament" />
+    <FunctionImportMapping FunctionImportName="Ajouter_Patient" FunctionName="Gestion_HopitalModel.Store.Ajouter_Patient" />
+    <FunctionImportMapping FunctionImportName="Ajouter_Rdv" FunctionName="Gestion_HopitalModel.Store.Ajouter_Rdv" />
+    <FunctionImportMapping FunctionImportName="ajouter_rePatient_web" FunctionName="Gestion_HopitalModel.Store.ajouter_rePatient_web" />
+    <FunctionImportMapping FunctionImportName="AjouterTest" FunctionName="Gestion_HopitalModel.Store.AjouterTest" />
+    <FunctionImportMapping FunctionImportName="Modifier_Agent" FunctionName="Gestion_HopitalModel.Store.Modifier_Agent" />
+    <FunctionImportMapping FunctionImportName="Modifier_Docteur" FunctionName="Gestion_HopitalModel.Store.Modifier_Docteur" />
+    <FunctionImportMapping FunctionImportName="Modifier_Patient" FunctionName="Gestion_HopitalModel.Store.Modifier_Patient" />
+    <FunctionImportMapping FunctionImportName="Modifier_Rdv" FunctionName="Gestion_HopitalModel.Store.Modifier_Rdv" />
+    <FunctionImportMapping FunctionImportName="Modifier_rePatient_web" FunctionName="Gestion_HopitalModel.Store.Modifier_rePatient_web" />
+    <FunctionImportMapping FunctionImportName="ModifierOrd_Medicament" FunctionName="Gestion_HopitalModel.Store.ModifierOrd_Medicament" />
+    <FunctionImportMapping FunctionImportName="ModifierTest" FunctionName="Gestion_HopitalModel.Store.ModifierTest" />
+    <FunctionImportMapping FunctionImportName="Recherche_Docteur" FunctionName="Gestion_HopitalModel.Store.Recherche_Docteur">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Docteur_Result">
+          <ScalarProperty Name="Id_Doc" ColumnName="Id_Doc" />
+          <ScalarProperty Name="Nom_Doc" ColumnName="Nom_Doc" />
+          <ScalarProperty Name="Prenom_Doc" ColumnName="Prenom_Doc" />
+          <ScalarProperty Name="DateNaissance_Doc" ColumnName="DateNaissance_Doc" />
+          <ScalarProperty Name="Doc_specialite" ColumnName="Doc_specialite" />
+          <ScalarProperty Name="Doc_experience" ColumnName="Doc_experience" />
+          <ScalarProperty Name="Doc_phone" ColumnName="Doc_phone" />
+          <ScalarProperty Name="Doc_addr" ColumnName="Doc_addr" />
+          <ScalarProperty Name="Doc_pass" ColumnName="Doc_pass" />
+          <ScalarProperty Name="Doc_Image" ColumnName="Doc_Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Recherche_Patient_CIN" FunctionName="Gestion_HopitalModel.Store.Recherche_Patient_CIN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Patient_CIN_Result">
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Recherche_Patient_Prenom" FunctionName="Gestion_HopitalModel.Store.Recherche_Patient_Prenom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Patient_Prenom_Result">
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Date_Naissance" ColumnName="Date Naissance" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Maladie" ColumnName="Maladie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Recherche_Rdv_Date" FunctionName="Gestion_HopitalModel.Store.Recherche_Rdv_Date">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.Recherche_Rdv_Date_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Heure" ColumnName="Heure" />
+          <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+          <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RechercherNomTest" FunctionName="Gestion_HopitalModel.Store.RechercherNomTest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.RechercherNomTest_Result">
+          <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RechercherOrd_Medicament_Nom" FunctionName="Gestion_HopitalModel.Store.RechercherOrd_Medicament_Nom" />
+    <FunctionImportMapping FunctionImportName="rechercherRdvDoc_CIN" FunctionName="Gestion_HopitalModel.Store.rechercherRdvDoc_CIN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.rechercherRdvDoc_CIN_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Heure" ColumnName="Heure" />
+          <ScalarProperty Name="Cin_pat" ColumnName="Cin_pat" />
+          <ScalarProperty Name="Nom_Docteur" ColumnName="Nom Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RechercherTestDocNom" FunctionName="Gestion_HopitalModel.Store.RechercherTestDocNom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gestion_HopitalModel.RechercherTestDocNom_Result">
+          <ScalarProperty Name="Nom_Test" ColumnName="Nom Test" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Docteur" ColumnName="Docteur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Gestion_HopitalModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Gestion_HopitalModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Gestion_HopitalModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Gestion_HopitalModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Gestion_HopitalModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Gestion_HopitalModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Gestion_HopitalModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="Supprimer_Agent" FunctionName="Gestion_HopitalModel.Store.Supprimer_Agent" />
+    <FunctionImportMapping FunctionImportName="Supprimer_Docteur" FunctionName="Gestion_HopitalModel.Store.Supprimer_Docteur" />
+    <FunctionImportMapping FunctionImportName="Supprimer_Patient" FunctionName="Gestion_HopitalModel.Store.Supprimer_Patient" />
+    <FunctionImportMapping FunctionImportName="Supprimer_Rdv" FunctionName="Gestion_HopitalModel.Store.Supprimer_Rdv" />
+    <FunctionImportMapping FunctionImportName="Supprimer_rePatient_web" FunctionName="Gestion_HopitalModel.Store.Supprimer_rePatient_web" />
+    <FunctionImportMapping FunctionImportName="SupprimerOrd_Medicament" FunctionName="Gestion_HopitalModel.Store.SupprimerOrd_Medicament" />
+    <FunctionImportMapping FunctionImportName="SupprimerTest" FunctionName="Gestion_HopitalModel.Store.SupprimerTest" />
+  </EntityContainerMapping>
+</Mapping>

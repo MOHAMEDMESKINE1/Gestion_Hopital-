@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7BD6BB94-7374-4818-B3FE-0BC38CC2924F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Projet_Fin_classe_HOPITAL</RootNamespace>
+    <AssemblyName>Projet_Fin_classe_HOPITAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\..\Downloads\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\Downloads\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.pdfa.5.5.13.3\lib\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin_Forms\Admin_Dashbord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Admin_Dashbord.Designer.cs">
+      <DependentUpon>Admin_Dashbord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Agent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Agent.Designer.cs">
+      <DependentUpon>Agent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Docteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Docteur.Designer.cs">
+      <DependentUpon>Docteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Patient.Designer.cs">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Agent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Agent.Designer.cs">
+      <DependentUpon>Details Agent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Docteur.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Docteur.Designer.cs">
+      <DependentUpon>Details Docteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Patient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin_Forms\Reporting\Details Patient.Designer.cs">
+      <DependentUpon>Details Patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agent_Form\Agent_Dashbord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agent_Form\Agent_Dashbord.Designer.cs">
+      <DependentUpon>Agent_Dashbord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agent_Form\Patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agent_Form\Patient.Designer.cs">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agent_Form\Rendez_vous.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agent_Form\Rendez_vous.Designer.cs">
+      <DependentUpon>Rendez_vous.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agent_Form\Rendez_vous_web.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agent_Form\Rendez_vous_web.Designer.cs">
+      <DependentUpon>Rendez_vous_web.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Admin.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\AfficherFullName_Doc_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\AfficherOrdonnanceMedicamentPrint_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\AfficherOrdonnanceMedicament_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\AfficherTest_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Afficher_Patient_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Afficher_Rdv_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Agent.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Doctor.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Gestion_Hopital.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gestion_Hopital.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Gestion_Hopital.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Gestion_Hopital.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gestion_Hopital.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Ordonnance.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Ordonnance_Medicament.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Patient.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Patient_web.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\RechercherNomTest_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\rechercherRdvDoc_CIN_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\RechercherTestDocNom_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Recherche_Docteur_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Recherche_Patient_CIN_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Recherche_Patient_Prenom_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Recherche_Rdv_Date_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Rendez_vous.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\sysdiagrams.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Test.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Test_Ordonnance.cs">
+      <DependentUpon>Gestion_Hopital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Doctor_Dashbord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Doctor_Dashbord.Designer.cs">
+      <DependentUpon>Doctor_Dashbord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Ordonnance_medicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Ordonnance_medicament.Designer.cs">
+      <DependentUpon>Ordonnance_medicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Patient.Designer.cs">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Rendez_vous.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Rendez_vous.Designer.cs">
+      <DependentUpon>Rendez_vous.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Reporting\ordonnance medicament.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Reporting\ordonnance medicament.Designer.cs">
+      <DependentUpon>ordonnance medicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Forms\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor_Forms\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Form\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Form\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Admin_Forms\Admin_Dashbord.resx">
+      <DependentUpon>Admin_Dashbord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Agent.resx">
+      <DependentUpon>Agent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Docteur.resx">
+      <DependentUpon>Docteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Patient.resx">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Reporting\Details Agent.resx">
+      <DependentUpon>Details Agent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Reporting\Details Docteur.resx">
+      <DependentUpon>Details Docteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Forms\Reporting\Details Patient.resx">
+      <DependentUpon>Details Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agent_Form\Agent_Dashbord.resx">
+      <DependentUpon>Agent_Dashbord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agent_Form\Patient.resx">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agent_Form\Rendez_vous.resx">
+      <DependentUpon>Rendez_vous.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agent_Form\Rendez_vous_web.resx">
+      <DependentUpon>Rendez_vous_web.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Doctor_Dashbord.resx">
+      <DependentUpon>Doctor_Dashbord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Ordonnance_medicament.resx">
+      <DependentUpon>Ordonnance_medicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Patient.resx">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Rendez_vous.resx">
+      <DependentUpon>Rendez_vous.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Reporting\ordonnance medicament.resx">
+      <DependentUpon>ordonnance medicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor_Forms\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_Form\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="BackEnd\Gestion_Hopital.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Gestion_Hopital.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BackEnd\Gestion_Hopital.edmx.diagram">
+      <DependentUpon>Gestion_Hopital.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin_Forms\Fonts\doctor %281%29.png" />
+    <Content Include="Admin_Forms\Fonts\doctor.png" />
+    <Content Include="Admin_Forms\Fonts\patient.png" />
+    <Content Include="Admin_Forms\Fonts\patient1.png" />
+    <Content Include="Agent_Form\Fonts\add-user %281%29.png" />
+    <Content Include="Agent_Form\Fonts\add-user.png" />
+    <Content Include="Agent_Form\Fonts\cancel %283%29.png" />
+    <Content Include="Agent_Form\Fonts\cancel %284%29.png" />
+    <Content Include="Agent_Form\Fonts\delete %281%29.png" />
+    <Content Include="Agent_Form\Fonts\delete-user %281%29.png" />
+    <Content Include="Agent_Form\Fonts\delete-user.png" />
+    <Content Include="Agent_Form\Fonts\delete.png" />
+    <Content Include="Agent_Form\Fonts\diskette %281%29.png" />
+    <Content Include="Agent_Form\Fonts\diskette.png" />
+    <Content Include="Agent_Form\Fonts\doctor %281%29.png" />
+    <Content Include="Agent_Form\Fonts\doctor.png" />
+    <Content Include="Agent_Form\Fonts\patient.png" />
+    <Content Include="Agent_Form\Fonts\patient1.png" />
+    <Content Include="Agent_Form\Fonts\photo-camera %281%29.png" />
+    <Content Include="Agent_Form\Fonts\photo-camera.png" />
+    <Content Include="Agent_Form\Fonts\search %284%29.png" />
+    <Content Include="Agent_Form\Fonts\update %281%29.png" />
+    <Content Include="Agent_Form\Fonts\update.png" />
+    <Content Include="BackEnd\Gestion_Hopital.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Gestion_Hopital.edmx</DependentUpon>
+      <LastGenOutput>Gestion_Hopital.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BackEnd\Gestion_Hopital.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Gestion_Hopital.edmx</DependentUpon>
+      <LastGenOutput>Gestion_Hopital.cs</LastGenOutput>
+    </Content>
+    <Content Include="Doctor_Forms\Fonts\pencil %281%29.png" />
+    <Content Include="Login_Form\Font\Hopital.png" />
+    <Content Include="Login_Form\Font\hopital_C4r_icon.ico" />
+    <Content Include="Login_Form\Font\login_pic.png" />
+    <Content Include="Login_Form\Font\visibility.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
